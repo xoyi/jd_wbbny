@@ -26,8 +26,6 @@ https://wbbny.m.jd.com/babelDiy/Zeus/2s7hhSTbhMgxpGoa9JDnbDzJTaBB/index.html#/ho
 
 Cookie抓取：
 
-
-
 不会抓cookie的看这里
 
 1.推荐使用chrome浏览器，打开浏览器，按F12选择手机模式
