@@ -4,6 +4,8 @@
 
 https://wbbny.m.jd.com/babelDiy/Zeus/2s7hhSTbhMgxpGoa9JDnbDzJTaBB/index.html#/home
 
+**新增：添加扫码获取Cookie脚本，打开后使用京东app扫二维码，会生成对应的ck.txt文件**
+
 
 脚本使用方法：
 
