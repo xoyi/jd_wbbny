@@ -112,7 +112,7 @@ class JDMobCookies():
     jdstrcookies = ";".join(jdcookiesl)
     print("%s Cookies获取成功,将以下内容复制粘贴到需要的地方即可,同时已在该目录下生成一个 .txt 文件(一般的打开文本类程序即可查看修改),获取成功后自动退出程序\n%s"\
           %(jdcookiesd["pt_pin"],jdstrcookies))
-    with open("JDMob.txt", "a") as jdcookies:
+    with open("ck.txt", "a") as jdcookies:
         jdcookies.write(jdstrcookies + '\n')
     sys.exit()
 JDMobCookies().JDMobLogined()
