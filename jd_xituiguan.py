@@ -131,7 +131,12 @@ class Jd_xtg(object):
 
     def runTask2(self,types,id):
         reponse = self.runPost('task/followShop','followShop','starId='+self.starId+'&id='+id+'&type='+types)
-        print('获得守护星%s个，京豆%s个' % (reponse.get('data','')['integral'],reponse.get('data','')['jingBean']))
+        if reponse.get('code') == 200:
+            integral = reponse.get('data').get('integral')
+            jingBean = reponse.get('data').get('jingBean')
+            print('获得守护星%s个，京豆%s个' % (integral,jingBean))
+        else:
+            print(reponse.get('msg'))
         time.sleep(2)
 
     def getHomePage(self,starId):
