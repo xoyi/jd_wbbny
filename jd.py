@@ -77,8 +77,8 @@ def sign(headers):
         res = requests.post(url,headers=headers,data=data,verify=False).json()
         if res.get('code') == 0:
             if res.get('data').get('bizCode') == 0:
-                coins = res.get('data').get('value')
-                print('签到成功，获得%s个金币' % coins)
+                redPacketValue = res.get('data').get('result').get('redPacketValue')
+                print('签到成功，获得%s元红包' % redPacketValue)
             else:
                 print(res.get('data').get('bizMsg'))
         else:
@@ -88,19 +88,17 @@ def sign(headers):
 
 #逛店
 def guangdian(taskId,taskToken,itemId,buttonid,headers):
-    randomnum = random.randint(10000,100000)
+    randomnum = random.randint(1000000,9999999)
     secretp = get_secretp(headers)
     url = 'https://api.m.jd.com/client.action?functionId=zoo_collectScore'
     body = {
         "taskId":taskId,
-        "taskToken":taskToken,
-        "itemId":itemId,
         "actionType":1,
-        "ss":"{\"extraData\":\"{\\\"buttonid\\\":\\\"%s\\\",\\\"sceneid\\\":\\\"homePageh5\\\",\\\"appid\\\":\\\"50073\\\"}\",\"businessData\":{\"inviteId\":\"-1\",\"stealId\":\"-1\",\"rnd\":\"%s\",\"taskId\":%s},\"secretp\":\"%s\"}" % (buttonid,randomnum,taskId,secretp),
-        "shopSign":""
+        "taskToken":taskToken,
+        "ss":"{\"extraData\":{\"log\":\"-1\",\"sceneid\":\"QD216hPageh5\"},\"secretp\":\"%s\",\"random\":\"%s\"}" % (secretp,randomnum),
         }
     bodys = json.dumps(body)
-    data = 'functionId=zoo_collectScore&client=wh5&clientVersion=1.0.0&body=%s' % bodys
+    data = 'functionId=zoo_collectScore&body=%s&client=wh5&clientVersion=1.0.0' % bodys
     try:
         res = requests.post(url,headers=headers,data=data,verify=False,timeout=5).json()
         if res.get('data').get('bizCode') == 0:
