@@ -4,6 +4,7 @@ import time
 import json
 import random
 import re
+import sys
 from urllib import parse
 import urllib3
 urllib3.disable_warnings()
@@ -19,10 +20,16 @@ task_times = 3
 sleep_times = 2
 
 Cookies = []
-with open('ck.txt','r', encoding='utf-8') as ef:
-    for i in ef:
-        i = i.strip('\r\n')
-        Cookies.append(i)
+try:
+    with open('ck.txt','r', encoding='utf-8') as ef:
+        for i in ef:
+            i = i.strip('\r\n')
+            Cookies.append(i)
+except:
+    print('看看有ck.txt文件没，看看放cookie没')
+    input('按任意键退出')
+    sys.exit()
+
 #初始化
 def get_secretp(headers):
     url = 'https://api.m.jd.com/client.action?functionId=zoo_getHomeData'
