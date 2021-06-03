@@ -8,8 +8,9 @@ https://wbbny.m.jd.com/babelDiy/Zeus/2s7hhSTbhMgxpGoa9JDnbDzJTaBB/index.html#/ho
 <hr>
 
 **2021-06-03更新：<br>
-1、修复大部分火爆<br>
-2、打包exe**
+1、修复大部分火爆,增加加密js代码调用，务必下载放py文件放一起，exe的话也需要<br>
+2、python的话安装PyExecJS库 <br>
+3、打包exe**
 
 2021-06-02更新：<br>
 1、删除京东星推官<br>
@@ -20,10 +21,17 @@ https://wbbny.m.jd.com/babelDiy/Zeus/2s7hhSTbhMgxpGoa9JDnbDzJTaBB/index.html#/ho
 2、新增京东星推官活动
 
 <hr>
-脚本使用方法：
+
+**脚本使用方法：**
 
 
-1、python脚本，依赖requests库，需要自己抓取cookie，保存在ck.txt文件中
+1、python脚本，依赖requests库，PyExecJS库，需要将cookie放在ck.txt文件，可以使用get_jdcookie获取
+
+```
+pip install PyExecJS
+pip install requests
+```
+
 
 2、参数设置
 
