@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Written by xizhi
+# Written by 吹泡泡Ooo  QQ:1811881314
 
 import sys
 import time
@@ -74,8 +74,7 @@ class JDMobCookies():
     qrcodeb.save("JDMobQRcode.png")
     print("\n二维码图片 JDMobQRcode.png 已生成到该目录下,请后台运行程序,电脑打开图片后用京东APP扫码登录")
     if sys.platform == "win32":
-      im = Image.open('JDMobQRcode.png')
-      im.show()
+        os.system('start "" "JDMobQRcode.png"')
     elif sys.platform == "darwin":
         os.system('open "JDMobQRcode.png"')
     else:
@@ -110,9 +109,10 @@ class JDMobCookies():
     for jdcookie in jdcookiesd:
         jdcookiesl.append(jdcookie+"="+jdcookiesd.get(jdcookie))
     jdstrcookies = ";".join(jdcookiesl)
-    print("%s Cookies获取成功,将以下内容复制粘贴到需要的地方即可,同时已在该目录下生成一个 .txt 文件(一般的打开文本类程序即可查看修改),获取成功后自动退出程序\n%s"\
+    print("%s Cookies获取成功,将以下内容复制粘贴到需要的地方即可,同时已在该目录下生成一个 .txt 文件(一般的打开文本类程序即可查看修改),获取成功5秒后自动退出程序\n%s"\
           %(jdcookiesd["pt_pin"],jdstrcookies))
     with open("ck.txt", "a") as jdcookies:
         jdcookies.write(jdstrcookies + '\n')
+    time.sleep(5)
     sys.exit()
 JDMobCookies().JDMobLogined()

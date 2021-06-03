@@ -4,10 +4,11 @@ import time
 import json
 import random
 import re
-import sys
 from urllib import parse
 import urllib3
+import sys
 urllib3.disable_warnings()
+import execjs
 
 #活动地址
 #https://wbbny.m.jd.com/babelDiy/Zeus/2s7hhSTbhMgxpGoa9JDnbDzJTaBB/index.html#/home
@@ -27,7 +28,6 @@ try:
             Cookies.append(i)
 except:
     print('看看有ck.txt文件没，看看放cookie没')
-    input('按任意键退出')
     sys.exit()
 
 #初始化
@@ -93,16 +93,23 @@ def sign(headers):
     except:
         print('其他')
 
+def get_ss(secretp):
+    js = open('jiami.js','r',encoding='utf-8')
+    
+    ctx = execjs.compile(js.read())
+    ss = ctx.call('enString',secretp)
+    return ss
+
 #逛店
 def guangdian(taskId,taskToken,itemId,buttonid,headers):
-    randomnum = random.randint(1000000,9999999)
     secretp = get_secretp(headers)
+    ss = get_ss(secretp)
     url = 'https://api.m.jd.com/client.action?functionId=zoo_collectScore'
     body = {
         "taskId":taskId,
         "actionType":1,
         "taskToken":taskToken,
-        "ss":"{\"extraData\":{\"log\":\"-1\",\"sceneid\":\"QD216hPageh5\"},\"secretp\":\"%s\",\"random\":\"%s\"}" % (secretp,randomnum),
+        "ss":ss,
         }
     bodys = json.dumps(body)
     data = 'functionId=zoo_collectScore&body=%s&client=wh5&clientVersion=1.0.0' % bodys

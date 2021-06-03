@@ -4,10 +4,17 @@
 
 https://wbbny.m.jd.com/babelDiy/Zeus/2s7hhSTbhMgxpGoa9JDnbDzJTaBB/index.html#/home
 
-**2021-06-02更新：<br>
+**版本更新：**
+<hr>
+
+**2021-06-03更新：<br>
+1、修复大部分火爆<br>
+2、打包exe**
+
+2021-06-02更新：<br>
 1、删除京东星推官<br>
-2、更新脚本，修复火爆问题**
--
+2、更新脚本，修复火爆问题
+
 2021-05-31更新：<br>
 1、添加扫码获取Cookie脚本，打开后使用京东app扫二维码，会生成对应的ck.txt文件<br>
 2、新增京东星推官活动
