@@ -10,7 +10,10 @@ https://wbbny.m.jd.com/babelDiy/Zeus/2s7hhSTbhMgxpGoa9JDnbDzJTaBB/index.html#/ho
 **2021-06-03更新：<br>
 1、修复大部分火爆,增加加密js代码调用，务必下载放py文件放一起，exe的话也需要<br>
 2、python的话安装PyExecJS库 <br>
-3、打包exe**
+3、打包exe**<br>
+4、***************需要安装node.js**************** 官网：https://nodejs.org/en/
+安装时选下添加环境变量
+<img src="https://user-images.githubusercontent.com/37468615/120675522-bb02f000-c4c7-11eb-8bc5-2c81a5876247.png">
 
 2021-06-02更新：<br>
 1、删除京东星推官<br>
