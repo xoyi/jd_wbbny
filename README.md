@@ -7,10 +7,15 @@ https://wbbny.m.jd.com/babelDiy/Zeus/2s7hhSTbhMgxpGoa9JDnbDzJTaBB/index.html#/ho
 **版本更新：**
 <hr>
 
-**2021-06-03更新：<br>
-1、修复大部分火爆,增加加密js代码调用，务必下载放py文件放一起，exe的话也需要<br>
-2、python的话安装PyExecJS库 <br>
-3、打包exe**<br>
+==**2021-06-06更新：
+1、增加图鉴任务和抽奖
+2、增加微信小程序任务
+3、修复了一些bug** #F44336==
+
+**2021-06-03更新：
+1、修复大部分火爆,增加加密js代码调用，务必下载放py文件放一起，exe的话也需要
+2、python的话安装PyExecJS库 
+3、打包exe**
 4、***************需要安装node.js**************** 官网：https://nodejs.org/en/
 安装时选下添加环境变量
 <img src="https://user-images.githubusercontent.com/37468615/120675522-bb02f000-c4c7-11eb-8bc5-2c81a5876247.png">
@@ -50,9 +55,10 @@ pip install requests
 
 <img src='https://image.planet.youku.com/img/100/28/62238/i_1490875862238_0ed9b71bf959f06a1e81684cb5b89291_b_w308h705_face_w308h705_x0y0w0h0c0.jpg'>
 
-Cookie抓取：
-
+**Cookie抓取：**
 不会抓cookie的看这里
+一、直接使用上传得软件打开后，京东扫二维码获取
+二、利用浏览器抓包
 
 1.推荐使用chrome浏览器，打开浏览器，按F12选择手机模式
 
