@@ -329,16 +329,18 @@ def shop_task(headers,shopid):
                                 print('进店成功，获得%s金币' % s.get('data').get('result').get('acquiredScore'))
                             print('等待%s秒' % sleep_times)
                             time.sleep(sleep_times)
+            boxLotteryNum = response.get('data').get('result').get('boxLotteryNum')
+            if shopname:
+                print('%s还有%s次盲盒抽奖机会' % (shopname,boxLotteryNum))
+            else:
+                print('ID:%s还有%s次盲盒抽奖机会' % (shopid,boxLotteryNum))
+            sss = 0
+            while sss<boxLotteryNum:
+                chai(headers,shopid)
+                time.sleep(sleep_times)
+                sss += 1
         else:
             print(response.get('msg'))
-        boxLotteryNum = tujian(headers,'zoo_shopLotteryInfo',data).get('data').get('result').get('boxLotteryNum')
-        print('还有%s次盲盒抽奖' % boxLotteryNum)
-        sss = 0
-        while sss<boxLotteryNum:
-            chai(headers,shopid)
-            time.sleep(sleep_times)
-            sss += 1
-
     except Exception as e:
         print(e)
 #获取shopid
