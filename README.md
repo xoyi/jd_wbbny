@@ -7,10 +7,15 @@ https://wbbny.m.jd.com/babelDiy/Zeus/2s7hhSTbhMgxpGoa9JDnbDzJTaBB/index.html#/ho
 **版本更新：**
 <hr>
 
-**2021-06-06更新：<br>
+**2021-06-12更新：<br>
+1、修复火爆<br>
+2、需要安装下crypto-js**<br>
+```npm install crypto-js```
+
+2021-06-06更新：<br>
 1、增加图鉴任务和抽奖<br>
 2、增加微信小程序任务<br>
-3、修复了一些bug**<br>
+3、修复了一些bug<br>
 
 2021-06-03更新：<br>
 1、修复大部分火爆,增加加密js代码调用，务必下载放py文件放一起，exe的话也需要<br>
