@@ -58,7 +58,7 @@ def sign(headers):
         print('其他')
 
 def get_ss(secretp):
-    js = open('jiami.js','r',encoding='utf-8')
+    js = open('jiami2.js','r',encoding='utf-8')
     
     ctx = execjs.compile(js.read())
     ss = ctx.call('enString',secretp)
@@ -287,7 +287,7 @@ def chai(headers,shopSign):
     except Exception as e:
         print(e)
 #做任务
-def shop_task(headers,shopid):
+def shop_task(headers,shopid,shopname):
     data = 'functionId=zoo_shopLotteryInfo&body={"shopSign":"%s"}&client=wh5&clientVersion=1.0.0&uuid=network/wifi' % shopid
     try:
         response = tujian(headers,'zoo_shopLotteryInfo',data)
@@ -355,7 +355,7 @@ def tujian_renwu(headers):
             for shop in lists:
                 shopid = shop.get('extension').get('shopId')
                 shopname = shop.get('name','')
-                shop_task(headers,shopid)
+                shop_task(headers,shopid,shopname)
                 time.sleep(sleep_times)
         else:
             print(response.get('code'))
@@ -367,7 +367,7 @@ for Cookie in Cookies:
         'Connection': 'keep-alive',
         'Pragma': 'no-cache',
         'Cache-Control': 'no-cache',
-        'User-Agent': 'jdapp;Mozilla/5.0 (iPhone; CPU iPhone OS 12_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1',
+        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': '*/*',
         'Origin': 'https://wbbny.m.jd.com',
