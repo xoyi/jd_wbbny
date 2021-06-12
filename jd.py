@@ -58,7 +58,7 @@ def sign(headers):
         print('其他')
 
 def get_ss(secretp):
-    js = open('jiami2.js','r',encoding='utf-8')
+    js = open('jiami.js','r',encoding='utf-8')
     
     ctx = execjs.compile(js.read())
     ss = ctx.call('enString',secretp)
