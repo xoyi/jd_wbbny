@@ -28,6 +28,7 @@ try:
             Cookies.append(i)
 except:
     print('看看有ck.txt文件没，看看放cookie没')
+    time.sleep(5)
     sys.exit()
 
 #初始化
@@ -367,7 +368,7 @@ for Cookie in Cookies:
         'Connection': 'keep-alive',
         'Pragma': 'no-cache',
         'Cache-Control': 'no-cache',
-        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1',
+        'User-Agent': 'jdapp;Mozilla/5.0 (iPhone; CPU iPhone OS 10_2 like Mac OS X) AppleWebKit/602.3.12 (KHTML, like Gecko) Mobile/14C92 MicroMessenger/6.5.16 NetType/WIFI Language/zh_CN',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': '*/*',
         'Origin': 'https://wbbny.m.jd.com',
