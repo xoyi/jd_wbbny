@@ -34,7 +34,7 @@ except:
 #初始化
 def get_secretp(headers):
     url = 'https://api.m.jd.com/client.action?functionId=zoo_getHomeData'
-    data = 'functionId=zoo_getHomeData&body={}&client=wh5&clientVersion=1.0.0&uuid=0e0edcf51ce5aae024762ab96d6b07cf'
+    data = 'functionId=zoo_getHomeData&body={}&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf'
     res = requests.post(url,data=data,headers=headers,verify=False,timeout=5).json()
     if res.get('data').get('bizCode') == 0:
         return res.get('data').get('result').get('homeMainInfo').get('secretp')
@@ -76,7 +76,7 @@ def guangdian(taskId,taskToken,itemId,buttonid,headers):
         "ss":ss,
         }
     bodys = json.dumps(body)
-    data = 'functionId=zoo_collectScore&body=%s&client=wh5&clientVersion=1.0.0&uuid=0e0edcf51ce5aae024762ab96d6b07cf' % bodys
+    data = 'functionId=zoo_collectScore&body=%s&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf' % bodys
     try:
         res = requests.post(url,headers=headers,data=data,verify=False,timeout=5).json()
         if res.get('data').get('bizCode') == 0:
@@ -89,7 +89,7 @@ def guangdian(taskId,taskToken,itemId,buttonid,headers):
 
 #领取
 def lingqu(taskToken,headers):
-    url = 'https://api.m.jd.com/client.action?client=wh5&clientVersion=1.0.0&uuid=0e0edcf51ce5aae024762ab96d6b07cf&functionId=qryViewkitCallbackResult&body='
+    url = 'https://api.m.jd.com/client.action?client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf&functionId=qryViewkitCallbackResult&body='
     body = {
         'dataSource': "newshortAward",
         'method': "getTaskAward",
@@ -109,7 +109,7 @@ def lingqu(taskToken,headers):
         print('其他')
 def getFeedDetail(taskId,headers):
     url = 'https://api.m.jd.com/client.action?functionId=zoo_getFeedDetail'
-    data = 'functionId=zoo_getFeedDetail&body={"taskId":"%s"}&client=wh5&clientVersion=1.0.0&uuid=0e0edcf51ce5aae024762ab96d6b07cf' % taskId
+    data = 'functionId=zoo_getFeedDetail&body={"taskId":"%s"}&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf' % taskId
     try:
         res = requests.post(url,headers=headers,data=data,verify=False,timeout=5).json()
         productInfoVos = res.get('data').get('result').get('addProductVos')[0].get('productInfoVos')
@@ -234,7 +234,7 @@ def zoo_getWelfareScore(headers,currentScence):
     url = 'https://api.m.jd.com/client.action?functionId=zoo_getWelfareScore'
     body = {"type": 2,"currentScence":currentScence,"ss":get_ss(secretp)}
     bodys = json.dumps(body)
-    data = 'functionId=zoo_getWelfareScore&body=%s&client=wh5&clientVersion=1.0.0&uuid=0e0edcf51ce5aae024762ab96d6b07cf' % bodys
+    data = 'functionId=zoo_getWelfareScore&body=%s&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf' % bodys
     res = requests.post(url,headers=headers,data=data,verify=False,timeout=5).json()
     return res
 
@@ -242,7 +242,7 @@ def zoo_getWelfareScore(headers,currentScence):
 def zoo_bdCollectScore(headers,taskId,taskToken,shopSign):
     body = {"taskId": taskId,"actionType":1,"taskToken":taskToken,"ss":get_ss(secretp),"shopSign":shopSign}
     bodys = json.dumps(body)
-    data = 'functionId=zoo_bdCollectScore&body=%s&client=wh5&clientVersion=1.0.0&uuid=0e0edcf51ce5aae024762ab96d6b07cf' % bodys
+    data = 'functionId=zoo_bdCollectScore&body=%s&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf' % bodys
     res = tujian(headers, 'zoo_bdCollectScore', data)
     return res
 #完成分享任务
@@ -275,7 +275,7 @@ def tujian_share(headers):
 #拆盲盒子
 def chai(headers,shopSign):
     url = 'https://api.m.jd.com/client.action?functionId=zoo_boxShopLottery'
-    data = 'functionId=zoo_boxShopLottery&body={"shopSign":"%s"}&client=wh5&clientVersion=1.0.0&uuid=0e0edcf51ce5aae024762ab96d6b07cf' % shopSign
+    data = 'functionId=zoo_boxShopLottery&body={"shopSign":"%s"}&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf' % shopSign
     try:
         response = requests.post(url,headers=headers,data=data,verify=False,timeout=5).json()
         if response.get('code') == 0:
@@ -377,14 +377,14 @@ for Cookie in Cookies:
         'Sec-Fetch-Dest': 'empty',
         'Referer': 'https://wbbny.m.jd.com/',
         'Accept-Language': 'zh-CN,zh;q=0.9',
-        'Cookie':Cookie
+        'Cookie':Cookie + ';joyytoken=50084MDFyU25PVTAxMQ==.Q2VcfG1HY1d7YktiVzFsOTIfImIiYwo3K0N/WGNhXmIQfStDLRo4IDNrO30GGyMbBC1BADh/MEYyGnYET24Q.2e6f5ca8;'
     }
     secretp = get_secretp(headers)
     sign(headers)
     i = 1
     while i < task_times:
-        vxdata = 'functionId=zoo_getTaskDetail&body={"appSign":"2","channel":1,"shopSign":""}&client=wh5&clientVersion=1.0.0&uuid=0e0edcf51ce5aae024762ab96d6b07cf'
-        jddata = 'functionId=zoo_getTaskDetail&body={}&client=wh5&clientVersion=1.0.0&uuid=0e0edcf51ce5aae024762ab96d6b07cf'
+        vxdata = 'functionId=zoo_getTaskDetail&body={"appSign":"2","channel":1,"shopSign":""}&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf'
+        jddata = 'functionId=zoo_getTaskDetail&body={}&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf'
         print('开始微信任务')
         vxtask_list(headers,vxdata)
         print('开始京东任务')
