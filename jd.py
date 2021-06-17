@@ -58,16 +58,26 @@ def sign(headers):
     except:
         print('其他')
 
-def get_ss(secretp):
+def get_ss(secretp,joyToken):
     js = open('jiami.js','r',encoding='utf-8')
     
     ctx = execjs.compile(js.read())
-    ss = ctx.call('enString',secretp)
+    ss = ctx.call('enString',secretp,joyToken)
     return ss
-
+#获取joytoken
+def get_joytoken(headers):
+    url = 'https://bh.m.jd.com/gettoken'
+    data = 'content={"appname":"50084","whwswswws":"","jdkey":"","body":{"platform":"1"}}'
+    
+    try:
+        res = requests.post(url,headers=headers,data=data).json()
+        joytoken = res.get('joyytoken')
+        return joytoken
+    except:
+        return None
 #逛店
 def guangdian(taskId,taskToken,itemId,buttonid,headers):
-    ss = get_ss(secretp)
+    ss = get_ss(secretp,joyToken)
     url = 'https://api.m.jd.com/client.action?functionId=zoo_collectScore'
     body = {
         "taskId":taskId,
@@ -232,7 +242,7 @@ def tujian(headers,types,data):
 #分享任务
 def zoo_getWelfareScore(headers,currentScence):
     url = 'https://api.m.jd.com/client.action?functionId=zoo_getWelfareScore'
-    body = {"type": 2,"currentScence":currentScence,"ss":get_ss(secretp)}
+    body = {"type": 2,"currentScence":currentScence,"ss":get_ss(secretp,joyToken)}
     bodys = json.dumps(body)
     data = 'functionId=zoo_getWelfareScore&body=%s&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf' % bodys
     res = requests.post(url,headers=headers,data=data,verify=False,timeout=5).json()
@@ -240,7 +250,7 @@ def zoo_getWelfareScore(headers,currentScence):
 
 #完成图鉴逛店任务
 def zoo_bdCollectScore(headers,taskId,taskToken,shopSign):
-    body = {"taskId": taskId,"actionType":1,"taskToken":taskToken,"ss":get_ss(secretp),"shopSign":shopSign}
+    body = {"taskId": taskId,"actionType":1,"taskToken":taskToken,"ss":get_ss(secretp,joyToken),"shopSign":shopSign}
     bodys = json.dumps(body)
     data = 'functionId=zoo_bdCollectScore&body=%s&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf' % bodys
     res = tujian(headers, 'zoo_bdCollectScore', data)
@@ -377,10 +387,13 @@ for Cookie in Cookies:
         'Sec-Fetch-Dest': 'empty',
         'Referer': 'https://wbbny.m.jd.com/',
         'Accept-Language': 'zh-CN,zh;q=0.9',
-        'Cookie':Cookie + ';joyytoken=50084MDFyU25PVTAxMQ==.Q2VcfG1HY1d7YktiVzFsOTIfImIiYwo3K0N/WGNhXmIQfStDLRo4IDNrO30GGyMbBC1BADh/MEYyGnYET24Q.2e6f5ca8;'
+        'Cookie':Cookie
     }
     secretp = get_secretp(headers)
     sign(headers)
+    joyToken = get_joytoken(headers)
+    Cookie =  Cookie + ';joyytoken=50084' + joyToken
+    headers['Cookie'] = Cookie
     i = 1
     while i < task_times:
         vxdata = 'functionId=zoo_getTaskDetail&body={"appSign":"2","channel":1,"shopSign":""}&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf'
