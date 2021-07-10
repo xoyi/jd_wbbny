@@ -1,4 +1,4 @@
-<b>京东热爱狂欢趴 一键完成任务脚本来袭</b>
+<b>京东燃动夏季 一键完成任务脚本来袭</b>
 
 活动地址：
 https://wbbny.m.jd.com/babelDiy/Zeus/2rtpffK8wqNyPBH6wyUDuBKoAbCt/index.html#/pages/index/index
