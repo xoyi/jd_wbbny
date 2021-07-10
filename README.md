@@ -1,47 +1,23 @@
 <b>京东热爱狂欢趴 一键完成任务脚本来袭</b>
 
 活动地址：
-
-https://wbbny.m.jd.com/babelDiy/Zeus/2s7hhSTbhMgxpGoa9JDnbDzJTaBB/index.html#/home
+https://wbbny.m.jd.com/babelDiy/Zeus/2rtpffK8wqNyPBH6wyUDuBKoAbCt/index.html#/pages/index/index
 
 **版本更新：**
 <hr>
 
-**2021-06-12更新：<br>
-1、修复火爆<br>
-2、需要安装下crypto-js**<br>
-```npm install crypto-js```
-
-2021-06-06更新：<br>
-1、增加图鉴任务和抽奖<br>
-2、增加微信小程序任务<br>
-3、修复了一些bug<br>
-
-2021-06-03更新：<br>
-1、修复大部分火爆,增加加密js代码调用，务必下载放py文件放一起，exe的话也需要<br>
-2、python的话安装PyExecJS库 <br>
-3、打包exe<br>
-4、***************需要安装node.js**************** 官网：https://nodejs.org/en/
-安装时选下添加环境变量
-<img src="https://user-images.githubusercontent.com/37468615/120675522-bb02f000-c4c7-11eb-8bc5-2c81a5876247.png">
-
-2021-06-02更新：<br>
-1、删除京东星推官<br>
-2、更新脚本，修复火爆问题
-
-2021-05-31更新：<br>
-1、添加扫码获取Cookie脚本，打开后使用京东app扫二维码，会生成对应的ck.txt文件<br>
-2、新增京东星推官活动
+**2021-07-10更新：<br>
+1、增加活动逛店等任务<br>
+2、增加抽奖等**<br>
 
 <hr>
 
 **脚本使用方法：**
 
 
-1、python脚本，依赖requests库，PyExecJS库，需要将cookie放在ck.txt文件，可以使用get_jdcookie获取
+1、python脚本，依赖requests库，需要将cookie放在ck.txt文件，可以使用get_jdcookie获取
 
 ```
-pip install PyExecJS
 pip install requests
 ```
 
@@ -54,6 +30,8 @@ pip install requests
 3、脚本可以完成签到，逛店，加购等任务
 
 4、将py文件件跟ck.txt放一起运行，没ck.txt的自己创建个，多账号的话换行放cookie即可
+
+5、本次增加了给作者助力的功能，不想助力输入n后回车即可
 
 截图：
 试了几个号暂时看着没啥问题，运行截图
