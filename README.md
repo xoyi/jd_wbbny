@@ -5,10 +5,14 @@ https://wbbny.m.jd.com/babelDiy/Zeus/2rtpffK8wqNyPBH6wyUDuBKoAbCt/index.html#/pa
 
 **版本更新：**
 <hr>
+**2021-07-14更新：<br>
+1、修复火爆<br>
+2、增加selenium,需下载对应驱动，可以去这里下载对应chrome版本的chromedriver   
+http://npm.taobao.org/mirrors/chromedriver**
 
-**2021-07-10更新：<br>
+2021-07-10更新：<br>
 1、增加活动逛店等任务<br>
-2、增加抽奖等**<br>
+2、增加抽奖等<br>
 
 <hr>
 
@@ -19,6 +23,7 @@ https://wbbny.m.jd.com/babelDiy/Zeus/2rtpffK8wqNyPBH6wyUDuBKoAbCt/index.html#/pa
 
 ```
 pip install requests
+pip install selenium
 ```
 
 

@@ -12,8 +12,7 @@ import os
 #活动地址
 #https://wbbny.m.jd.com/babelDiy/Zeus/2rtpffK8wqNyPBH6wyUDuBKoAbCt/index.html#
 
-print('欢迎使用jd脚本，有问题可以咨询作者QQ：1811881314\n')
-print('原创教程：https://www.yqhd8.com/hd/3587 \n')
+
 #循环任务次数，可以多跑几次没事
 task_times = 3
 #间隔时间，默认在任务所需的基础上加，一般设置2s左右就成，看自己
@@ -37,7 +36,7 @@ else:
     time.sleep(5)
     sys.exit()
 
-print('软件放了作者的助力，不想助力的直接输入n 回车即可\n')
+
 #获取joytoken
 def get_joytoken(headers):
     url = 'https://bh.m.jd.com/gettoken'
@@ -50,11 +49,57 @@ def get_joytoken(headers):
     except:
         return None
 
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+
+driver = webdriver.Chrome(chrome_options=chrome_options)
+
+
+driver.get("https://wbbny.m.jd.com/babelDiy/Zeus/2rtpffK8wqNyPBH6wyUDuBKoAbCt/index.html#")
+time.sleep(2)
+print('\n\n欢迎使用jd脚本，有问题可以咨询作者QQ：1811881314\n')
+print('原创教程：https://www.yqhd8.com/hd/3587 \n')
+def get_ss():
+    js = """
+        let DATA = {
+            appid: '50085',
+            sceneid: 'OY217hPageh5'
+        };
+        var t = Math.floor(1e7 + 9e7 * Math.random()).toString();
+        var e = smashUtils.get_risk_result({
+            id: t,
+            data: {
+                random: t
+            }
+        }).log;
+        var o = JSON.stringify({
+            extraData: {
+                log: encodeURIComponent(e),
+                sceneid: DATA.sceneid,
+            },
+            secretp: $.secretp,
+            random: t
+        })
+        
+        return o;
+    """
+    a = driver.execute_script(js)
+    return a
+
 #逛店
 def guangdian(taskId,taskToken,itemId,buttonid,headers):
-    randomnum = random.randint(12345678,99999999)
-    url = 'https://api.m.jd.com/client.action?advId=olympicgames_doTaskDetail'
-    data = 'functionId=olympicgames_doTaskDetail&body={"taskId":%s,"taskToken":"%s","ss":"{\\"extraData\\":{\\"log\\":\\"-1\\",\\"sceneid\\":\\"OY217hPageh5\\"},\\"random\\":\\"%s\\"}","actionType":1}&client=wh5&clientVersion=1.0.0&uuid=73a07746ec2192f3c44fa31f25c800e2a79bcbb8&appid=o2_act' % (taskId,taskToken,randomnum)
+    url = 'https://api.m.jd.com/client.action?functionId=olympicgames_doTaskDetail'
+    ss = get_ss()
+    body = {
+        "taskId":taskId,
+        "taskToken":taskToken,
+        "ss":ss,
+        "actionType":1
+        }
+    bodys = json.dumps(body).replace(" ", "")
+    data = 'functionId=olympicgames_doTaskDetail&body=%s&client=wh5&clientVersion=1.0.0&uuid=73a07746ec2192f3c44fa31f25c800e2a79bcbb8&appid=o2_act' % bodys
     try:
         res = requests.post(url,headers=headers,data=data,verify=False,timeout=5).json()
         if res.get('data').get('bizCode') == 0:
@@ -212,13 +257,15 @@ def vxtask_list(headers,data):
 #助力
 def jd_zhuli(inviteId,headers):
     randomnum = random.randint(12345678,99999999)
-    url = 'https://api.m.jd.com/client.action?functionId=olympicgames_assist'
+    ss = get_ss()
+    url = 'https://api.m.jd.com/client.action?dev=olympicgames_assist'
     body = {
-        "ss":'{\\"extraData\\":{\\"log\\":\\"-1\\",\\"sceneid\\":\\"OY217hPageh5\\"},\\"random\\":\\"%s\\"}' % randomnum,
-        "inviteId":inviteId
-        }
+        "inviteId":"%s" % inviteId,
+        "type":"confirm",
+        "ss":ss
+    }
     bodys = json.dumps(body)
-    data = 'functionId=olympicgames_assist&body=%s&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf&appid=o2_act' % bodys
+    data = 'functionId=olympicgames_assist&appid=o2_act&client=wh5&clientVersion=1.0.0&uuid=-1&body=%s' % bodys
     try:
         res = requests.post(url,headers=headers,data=data,verify=False,timeout=5).json()
         if res.get('data').get('bizCode') == 0:
@@ -234,10 +281,10 @@ inviteIds = ['HcmphIzxA1z2LcfLRIF_mmWd2D8sqX8IqY_Kb-hdNW34hvAuqwFy3-1dpHWE6LUy4f
     'HcmphLr4EE7nK8HWW5hX1o-qmFtwyUwmOHsnpBJo5X12i-qlglms0UGEhw']
 def get(functionId,headers):
     url = 'https://api.m.jd.com/client.action?advId=%s' % functionId
-
+    ss = get_ss()
     body = {
-        "type":2,
-        "ss":"{\"extraData\":{\"log\":\"-1\",\"sceneid\":\"OY217hPageh5\"},\"random\":\"66697357\"}",
+        "type":1,
+        "ss":ss,
         }
     bodys = json.dumps(body)
     data = 'functionId={0}&body={1}&client=wh5&clientVersion=1.0.0&uuid=ef746bc0663f7ca06cdd1fa724c15451900039cf&appid=o2_act'.format(functionId,bodys)
@@ -256,12 +303,18 @@ def tujian(headers,types,data):
     res = requests.post(url,headers=headers,data=data,verify=False,timeout=5).json()
     return res
 
-#任务
 def bdDoTask(headers,taskId,taskToken,shopSign):
-    randomnum = random.randint(12345678,99999999)
-    data = 'functionId=olympicgames_doTaskDetail&body={"taskId":%s,"taskToken":"%s","ss":"{\\"extraData\\":{\\"log\\":\\"-1\\",\\"sceneid\\":\\"OY217hPageh5\\"},\\"random\\":\\"%s\\"}","shopSign":"%s","actionType":1}&client=wh5&clientVersion=1.0.0&uuid=73a07746ec2192f3c44fa31f25c800e2a79bcbb8&appid=o2_act' % (taskId,taskToken,randomnum,shopSign)
+    ss = get_ss()
+    body = {
+        "taskId":taskId,
+        "taskToken":taskToken,
+        "ss":ss,
+        "shopSign":"%s" % shopSign,"actionType":1
+        }
+    bodys = json.dumps(body).replace(" ", "")
+    data = 'functionId=olympicgames_doTaskDetail&body=%s&client=wh5&clientVersion=1.0.0&uuid=73a07746ec2192f3c44fa31f25c800e2a79bcbb8&appid=o2_act' % bodys
     res = tujian(headers, 'olympicgames_bdDoTask', data)
-    return res
+    return res    
 
 #拆盲盒子
 def chai(headers,shopSign):
@@ -364,7 +417,7 @@ def dianpu_renwu(headers):
             print(response.get('code'))
     except Exception as e:
         print(e)
-
+print('软件放了作者的助力，不想助力的直接输入n 回车即可\n')
 print('是否愿意为作者助力：y/n')
 content = input()
 
@@ -373,7 +426,7 @@ for Cookie in Cookies:
         'Connection': 'keep-alive',
         'Pragma': 'no-cache',
         'Cache-Control': 'no-cache',
-        'User-Agent':'jdapp;iphone;android;8.3.0;10;network/wifi;model/MI 6;addressid/541286672;aid/d41d8cd98f00b204',
+        'User-Agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': '*/*',
         'Origin': 'https://wbbny.m.jd.com',
@@ -408,6 +461,6 @@ for Cookie in Cookies:
     if content != 'n':
         for inviteId in inviteIds:
             jd_zhuli(inviteId, headers)
+            time.sleep(2)
+driver.quit()
 print(time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(int(time.time()))))
-print('输入任意键结束：')
-input()
