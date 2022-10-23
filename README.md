@@ -1,4 +1,4 @@
-<b>京东燃动夏季 一键完成任务脚本来袭</b>
+<b>京东穿行寻宝 一键完成任务脚本来袭</b>
 
 活动地址：
 https://wbbny.m.jd.com/pb/013349910/3rFiv8Sdkn7BPhk8Pw8xrgMWH6mT/index.html#/home
