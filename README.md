@@ -1,39 +1,26 @@
 <b>京东燃动夏季 一键完成任务脚本来袭</b>
 
 活动地址：
-https://wbbny.m.jd.com/babelDiy/Zeus/2rtpffK8wqNyPBH6wyUDuBKoAbCt/index.html#/pages/index/index
-
-**版本更新：**
-<hr>
-
-**2021-07-14更新：**<br>
-1、修复火爆<br>
-2、增加selenium,需下载对应驱动，可以去这里下载对应chrome版本的chromedriver   <br>
-http://npm.taobao.org/mirrors/chromedriver/ 
-
-2021-07-10更新：<br>
-1、增加活动逛店等任务<br>
-2、增加抽奖等<br>
+https://wbbny.m.jd.com/pb/013349910/3rFiv8Sdkn7BPhk8Pw8xrgMWH6mT/index.html#/home
 
 <hr>
 
 **脚本使用方法：**
 
 
-1、python脚本，依赖requests库，需要将cookie放在ck.txt文件，可以使用get_jdcookie获取
+1、python脚本，依赖requests库，需要将cookie放在ck.txt文件
 
 ```
 pip install requests
-pip install selenium
 ```
 
 
 2、参数设置
 
     task_times     #循环任务次数，可以多跑几次没事
-    sleep_times  #间隔时间，默认在任务所需的基础上加，一般设置2s左右就成，看自己
+    sleep_times  #间隔时间，默认在任务所需的基础上加，我设置的5s左右，看自己
 
-3、脚本可以完成签到，逛店，加购等任务
+3、脚本可以完成逛店，加购等任务
 
 4、将py文件件跟ck.txt放一起运行，没ck.txt的自己创建个，多账号的话换行放cookie即可
 
@@ -42,7 +29,7 @@ pip install selenium
 截图：
 试了几个号暂时看着没啥问题，运行截图
 
-<img src='https://image.planet.youku.com/img/100/28/62238/i_1490875862238_0ed9b71bf959f06a1e81684cb5b89291_b_w308h705_face_w308h705_x0y0w0h0c0.jpg'>
+<img src='https://pic.rmb.bdstatic.com/bjh/ff2c443ee74736e86176d12bae878771.png'>
 
 **Cookie抓取：**<br>
 不会抓cookie的看这里<br>
@@ -64,6 +51,4 @@ jdapp;iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like G
  登录京东账号【save后记得选择刚保存的user-agent】
 
 4.登录后，点击network，然后活动中的任务列表，在network中找到那个请求的接口，把Headers 中的Cookie复制出来，直接document出来的貌似失败
-<img src='https://image.planet.youku.com/img/100/28/62238/i_1490875862238_05ef0bdf914bc70a89cdde3876324780_b_w1188h1057_face_w1188h1057_x0y0w0h0c0.png'>
-
-更多活动资讯请关注：https://www.yqhd8.com
+<img src='https://pic.rmb.bdstatic.com/bjh/aa2e811c0bcfabcdf5fee405d8ccf2e4.png'>
